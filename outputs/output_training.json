@@ -1,0 +1,23 @@
+[
+    {
+        "algorithm": "LR",
+        "hyperparms": {
+            "C": 2.7825594022071245,
+            "penalty": "l2"
+        },
+        "metric": "f1",
+        "score": 0.6843370029334184,
+        "model_file_path": "models/lr_model.joblib"
+    },
+    {
+        "algorithm": "SVM",
+        "hyperparms": {
+            "C": 10,
+            "gamma": "scale",
+            "kernel": "poly"
+        },
+        "metric": "f1",
+        "score": 0.7179345326131281,
+        "model_file_path": "models/svm_model.joblib"
+    }
+]

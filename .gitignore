@@ -1,0 +1,11 @@
+.vscode
+__pycache__
+data/fake_cvs/processed
+data/fake_cvs/anonymized
+src/config.json
+log
+ROADMAP.md
+.env
+tmp
+lib
+db
