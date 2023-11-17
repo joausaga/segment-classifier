@@ -20,7 +20,9 @@ defusedxml==0.7.1
 exceptiongroup==1.1.3
 executing==2.0.1
 fastjsonschema==2.18.1
+filelock==3.13.1
 fqdn==1.5.1
+fsspec==2023.10.0
 gensim==4.3.2
 idna==3.4
 importlib-metadata==6.8.0
@@ -50,10 +52,12 @@ jupyterlab_server==2.25.1
 MarkupSafe==2.1.3
 matplotlib-inline==0.1.6
 mistune==3.0.2
+mpmath==1.3.0
 nbclient==0.9.0
 nbconvert==7.11.0
 nbformat==5.9.2
 nest-asyncio==1.5.8
+networkx==3.2.1
 nltk==3.8.1
 notebook==7.0.6
 notebook_shim==0.2.3
@@ -93,10 +97,12 @@ smart-open==6.4.0
 sniffio==1.3.0
 soupsieve==2.5
 stack-data==0.6.3
+sympy==1.12
 terminado==0.18.0
 threadpoolctl==3.2.0
 tinycss2==1.2.1
 tomli==2.0.1
+torch==2.1.1
 tornado==6.3.3
 tqdm==4.66.1
 traitlets==5.13.0
