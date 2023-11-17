@@ -24,7 +24,7 @@ def get_prediction_class(prediction, encoder_file_path):
 @click.option('--input_fn', '-ifn', default='')
 @click.option('--outputs_dir', '-odir', default='outputs')
 @click.option('--output_fn', '-ofn', default='prediction_output.csv')
-@click.option('--training_outputs_fn', '-tofn', default='output_training.json')
+@click.option('--training_outputs_fn', '-tofn', default='output_ml_training.json')
 @click.option('--models_dir', '-mdir', default='models')
 @click.option('--classifier_name', '-clf', default='SVM')
 @click.option('--doc2vec_model_fn', '-d2vm', default='doc2vec.model')
