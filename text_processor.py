@@ -79,15 +79,15 @@ def preprocess_segments(segments):
   """
   Preprocess segments received as parameters
   """
-  stopwords = nltk.corpus.stopwords.words('english')
   preprocess_text = []
 
   for segment in segments:
+    # clean segment tokens
     segment = clean_segment(segment)
     # tokenize segment
     tokens = word_tokenize(segment)
-    # clean segment tokens
-    tokens = remove_stops_digits(tokens, stopwords)
+    # put tokens to lower case
+    tokens = [token.lower() for token in tokens]
     # add clean tokens to list
     preprocess_text.append(tokens)
 
