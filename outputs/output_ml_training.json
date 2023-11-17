@@ -6,7 +6,7 @@
             "penalty": "l2"
         },
         "metric": "f1",
-        "score": 0.6983969771408296,
+        "score": 0.6982390946146226,
         "model_file_path": "./models/lr_model.joblib"
     },
     {
@@ -17,7 +17,7 @@
             "kernel": "poly"
         },
         "metric": "f1",
-        "score": 0.7418002498591785,
+        "score": 0.7419724892610086,
         "model_file_path": "./models/svm_model.joblib"
     }
 ]
