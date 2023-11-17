@@ -2,12 +2,12 @@
     {
         "algorithm": "LR",
         "hyperparms": {
-            "C": 2.7825594022071245,
+            "C": 1.0,
             "penalty": "l2"
         },
         "metric": "f1",
-        "score": 0.6843370029334184,
-        "model_file_path": "models/lr_model.joblib"
+        "score": 0.6983969771408296,
+        "model_file_path": "./models/lr_model.joblib"
     },
     {
         "algorithm": "SVM",
@@ -17,7 +17,7 @@
             "kernel": "poly"
         },
         "metric": "f1",
-        "score": 0.7179345326131281,
-        "model_file_path": "models/svm_model.joblib"
+        "score": 0.7418002498591785,
+        "model_file_path": "./models/svm_model.joblib"
     }
 ]
