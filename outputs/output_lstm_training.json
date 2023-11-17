@@ -1,0 +1,173 @@
+[
+    {
+        "hyperparams": {
+            "vocabulary_size": 6601,
+            "num_classes": 7,
+            "embedding_dim": 200,
+            "hidden_dim": 64,
+            "n_layers": 2
+        },
+        "training_parameters": {
+            "epochs": 5,
+            "loss_fn": "cross entropy",
+            "optimizer": "adam"
+        },
+        "model": {
+            "name": "lstm_model_64_2.pth",
+            "file_path": "./models/lstm_model_64_2.pth",
+            "accuracy": 0.5225831567109305
+        }
+    },
+    {
+        "hyperparams": {
+            "vocabulary_size": 6601,
+            "num_classes": 7,
+            "embedding_dim": 200,
+            "hidden_dim": 64,
+            "n_layers": 3
+        },
+        "training_parameters": {
+            "epochs": 5,
+            "loss_fn": "cross entropy",
+            "optimizer": "adam"
+        },
+        "model": {
+            "name": "lstm_model_64_3.pth",
+            "file_path": "./models/lstm_model_64_3.pth",
+            "accuracy": 0.48232189973614775
+        }
+    },
+    {
+        "hyperparams": {
+            "vocabulary_size": 6601,
+            "num_classes": 7,
+            "embedding_dim": 200,
+            "hidden_dim": 64,
+            "n_layers": 4
+        },
+        "training_parameters": {
+            "epochs": 5,
+            "loss_fn": "cross entropy",
+            "optimizer": "adam"
+        },
+        "model": {
+            "name": "lstm_model_64_4.pth",
+            "file_path": "./models/lstm_model_64_4.pth",
+            "accuracy": 0.47064319390977116
+        }
+    },
+    {
+        "hyperparams": {
+            "vocabulary_size": 6601,
+            "num_classes": 7,
+            "embedding_dim": 200,
+            "hidden_dim": 128,
+            "n_layers": 2
+        },
+        "training_parameters": {
+            "epochs": 5,
+            "loss_fn": "cross entropy",
+            "optimizer": "adam"
+        },
+        "model": {
+            "name": "lstm_model_128_2.pth",
+            "file_path": "./models/lstm_model_128_2.pth",
+            "accuracy": 0.5780699857260263
+        }
+    },
+    {
+        "hyperparams": {
+            "vocabulary_size": 6601,
+            "num_classes": 7,
+            "embedding_dim": 200,
+            "hidden_dim": 128,
+            "n_layers": 3
+        },
+        "training_parameters": {
+            "epochs": 5,
+            "loss_fn": "cross entropy",
+            "optimizer": "adam"
+        },
+        "model": {
+            "name": "lstm_model_128_3.pth",
+            "file_path": "./models/lstm_model_128_3.pth",
+            "accuracy": 0.550932133742809
+        }
+    },
+    {
+        "hyperparams": {
+            "vocabulary_size": 6601,
+            "num_classes": 7,
+            "embedding_dim": 200,
+            "hidden_dim": 128,
+            "n_layers": 4
+        },
+        "training_parameters": {
+            "epochs": 5,
+            "loss_fn": "cross entropy",
+            "optimizer": "adam"
+        },
+        "model": {
+            "name": "lstm_model_128_4.pth",
+            "file_path": "./models/lstm_model_128_4.pth",
+            "accuracy": 0.5194082789047969
+        }
+    },
+    {
+        "hyperparams": {
+            "vocabulary_size": 6601,
+            "num_classes": 7,
+            "embedding_dim": 200,
+            "hidden_dim": 256,
+            "n_layers": 2
+        },
+        "training_parameters": {
+            "epochs": 5,
+            "loss_fn": "cross entropy",
+            "optimizer": "adam"
+        },
+        "model": {
+            "name": "lstm_model_256_2.pth",
+            "file_path": "./models/lstm_model_256_2.pth",
+            "accuracy": 0.5834335395129547
+        }
+    },
+    {
+        "hyperparams": {
+            "vocabulary_size": 6601,
+            "num_classes": 7,
+            "embedding_dim": 200,
+            "hidden_dim": 256,
+            "n_layers": 3
+        },
+        "training_parameters": {
+            "epochs": 5,
+            "loss_fn": "cross entropy",
+            "optimizer": "adam"
+        },
+        "model": {
+            "name": "lstm_model_256_3.pth",
+            "file_path": "./models/lstm_model_256_3.pth",
+            "accuracy": 0.5645140360742246
+        }
+    },
+    {
+        "hyperparams": {
+            "vocabulary_size": 6601,
+            "num_classes": 7,
+            "embedding_dim": 200,
+            "hidden_dim": 256,
+            "n_layers": 4
+        },
+        "training_parameters": {
+            "epochs": 5,
+            "loss_fn": "cross entropy",
+            "optimizer": "adam"
+        },
+        "model": {
+            "name": "lstm_model_256_4.pth",
+            "file_path": "./models/lstm_model_256_4.pth",
+            "accuracy": 0.5413555949651802
+        }
+    }
+]
