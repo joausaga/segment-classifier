@@ -52,7 +52,7 @@ The whole process followed in this approach is documented in the notebook `1_ml_
 A `long short-term memory (LSTM)` neural network architecture (a type of recurrent neural networks) has also been employed to approach the problem. The LSTM architecture
 has reported to be extensively used for text classification (e.g., [A Survey on Text Classification: From Traditional to Deep Learning](https://dl.acm.org/doi/pdf/10.1145/3495162)).
 
-In this approach, segments have been converted to numerical vectors before feeding them into an embedding layer of the LSTM architecture. Cross entropy loss has been chosen as the loss function, and Ada as the optimizer. Several configurations of the LSTM architecture have been trained, including combinations of different hidden state sizes and number of layers. The most accurate configuration has been selected for evaluation on the test set. Also here, `F1` was chosen as the performance metric.
+In this approach, segments have been converted to numerical vectors before feeding them into an embedding layer of the LSTM architecture. Cross entropy loss has been chosen as the loss function, and Adan as the optimizer. Several configurations of the LSTM architecture have been trained, including combinations of different hidden state sizes and number of layers. The most accurate configuration has been selected for evaluation on the test set. Also here, `F1` was chosen as the performance metric.
 
 In particular, an LSTM with *256 hidden state size* and *2 layers* was the best-performing model, reporting a `weighted F1` score of `0.71` on the test set, as shown in the following table.
 
@@ -89,7 +89,7 @@ Given the explained results, the **support vector machine model** has been selec
 
 The classifier is prepared to be used through the command line interface (CLI) by running the following command **from the directory of the repository**
 
-`python app.py --input_fn 'data/jobs_test.csv`
+`python app.py --input_fn data/jobs_test.csv`
 
 Predictions results are stored in the `outputs/` directory under `prediction_output.csv`.
 
