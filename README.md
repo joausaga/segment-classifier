@@ -37,13 +37,13 @@ More specifically, the process of building the models is composed of four steps:
 3. Evaluate the performance of the best *logistic regression* and *support vector machine* models on the test set;
 4. Select the model that shows the best results on the test set.
 
-According to the performance evaluation, the best classifier is a *support vector machine* with a *polynomial kernel* that reported a `weighted F1` of `0.78` on the test set. 
+According to the performance evaluation, the best classifier is a *support vector machine* with a *polynomial kernel* that reported a `weighted F1` of `0.76` on the test set. 
 
 |              | precision | recall | f1-score |   |
 |--------------|-----------|--------|----------| --|
-| accuracy     |         |      |        | 0.78 |
-| macro avg    | 0.75    | 0.71 | 0.72   |      |
-| weighted avg | 0.79    | 0.78 | 0.78   |      |
+| accuracy     |         |      |        | 0.76 |
+| macro avg    | 0.71    | 0.68 | 0.69   |      |
+| weighted avg | 0.76    | 0.76 | 0.76   |      |
 
 The whole process followed in this approach is documented in the notebook `1_ml_segment_classifier-model_development.ipynb`.
 
