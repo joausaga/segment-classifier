@@ -30,12 +30,11 @@ In this approach, features have been generated through two different strategies.
 Taking these features, a `Logistic Regression` and a `Suppor Vector Machine` have
 been trained. Both algorithms have been reported to perform well on unbalanced, small, and textual datasets (e.g., [Text Classification with Extremely Small Datasets](https://colab.research.google.com/corgiredirector?site=https%3A%2F%2Ftowardsdatascience.com%2Ftext-classification-with-extremely-small-datasets-333d322caee2)). Models are trained using cross-validation and their performance is measured by calculating the `weighted F1`. This metric was selected because it provides an adequate compromise between acceptable coverage and the correct identification of sections.
 
-More specifically, the process of building the models is composed of four steps:
+More specifically, the process of building the models is composed of three steps:
 
-1. Train algorithms using different combinations of hyperparameters;
-2. Pre-select the best *logistic regression* and *support vector machine* models;
-3. Evaluate the performance of the best *logistic regression* and *support vector machine* models on the test set;
-4. Select the model that shows the best results on the test set.
+* Grid search is used to find the optimal combination of hyperparameters;
+* Best models for each algortihm are pre-selected for training;
+* Testing performance of best models are compared and the model that shows the best results is selected.
 
 According to the performance evaluation, the best classifier is a *support vector machine* with a *polynomial kernel* that reported a `weighted F1` of `0.76` on the test set. 
 
