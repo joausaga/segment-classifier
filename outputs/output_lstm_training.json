@@ -14,8 +14,8 @@
         },
         "model": {
             "name": "lstm_model_64_2.pth",
-            "file_path": "./models/lstm_model_64_2.pth",
-            "accuracy": 0.5225831567109305
+            "file_path": "/content/drive/MyDrive/Personal/Applications/Avature/avature-solution/models/lstm_model_64_2.pth",
+            "accuracy": 0.5744469870327994
         }
     },
     {
@@ -33,8 +33,8 @@
         },
         "model": {
             "name": "lstm_model_64_3.pth",
-            "file_path": "./models/lstm_model_64_3.pth",
-            "accuracy": 0.48232189973614775
+            "file_path": "/content/drive/MyDrive/Personal/Applications/Avature/avature-solution/models/lstm_model_64_3.pth",
+            "accuracy": 0.5288176964149504
         }
     },
     {
@@ -52,8 +52,8 @@
         },
         "model": {
             "name": "lstm_model_64_4.pth",
-            "file_path": "./models/lstm_model_64_4.pth",
-            "accuracy": 0.47064319390977116
+            "file_path": "/content/drive/MyDrive/Personal/Applications/Avature/avature-solution/models/lstm_model_64_4.pth",
+            "accuracy": 0.5018154080854309
         }
     },
     {
@@ -71,8 +71,8 @@
         },
         "model": {
             "name": "lstm_model_128_2.pth",
-            "file_path": "./models/lstm_model_128_2.pth",
-            "accuracy": 0.5780699857260263
+            "file_path": "/content/drive/MyDrive/Personal/Applications/Avature/avature-solution/models/lstm_model_128_2.pth",
+            "accuracy": 0.6075209763539282
         }
     },
     {
@@ -90,8 +90,8 @@
         },
         "model": {
             "name": "lstm_model_128_3.pth",
-            "file_path": "./models/lstm_model_128_3.pth",
-            "accuracy": 0.550932133742809
+            "file_path": "/content/drive/MyDrive/Personal/Applications/Avature/avature-solution/models/lstm_model_128_3.pth",
+            "accuracy": 0.5760335621662852
         }
     },
     {
@@ -109,8 +109,8 @@
         },
         "model": {
             "name": "lstm_model_128_4.pth",
-            "file_path": "./models/lstm_model_128_4.pth",
-            "accuracy": 0.5194082789047969
+            "file_path": "/content/drive/MyDrive/Personal/Applications/Avature/avature-solution/models/lstm_model_128_4.pth",
+            "accuracy": 0.5422120518688025
         }
     },
     {
@@ -128,8 +128,8 @@
         },
         "model": {
             "name": "lstm_model_256_2.pth",
-            "file_path": "./models/lstm_model_256_2.pth",
-            "accuracy": 0.5834335395129547
+            "file_path": "/content/drive/MyDrive/Personal/Applications/Avature/avature-solution/models/lstm_model_256_2.pth",
+            "accuracy": 0.6105720823798627
         }
     },
     {
@@ -147,8 +147,8 @@
         },
         "model": {
             "name": "lstm_model_256_3.pth",
-            "file_path": "./models/lstm_model_256_3.pth",
-            "accuracy": 0.5645140360742246
+            "file_path": "/content/drive/MyDrive/Personal/Applications/Avature/avature-solution/models/lstm_model_256_3.pth",
+            "accuracy": 0.5899923722349352
         }
     },
     {
@@ -166,8 +166,8 @@
         },
         "model": {
             "name": "lstm_model_256_4.pth",
-            "file_path": "./models/lstm_model_256_4.pth",
-            "accuracy": 0.5413555949651802
+            "file_path": "/content/drive/MyDrive/Personal/Applications/Avature/avature-solution/models/lstm_model_256_4.pth",
+            "accuracy": 0.5402288329519451
         }
     }
 ]
