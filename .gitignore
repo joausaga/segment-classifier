@@ -11,3 +11,4 @@ lib
 db
 jobs_test.csv
 jobs_training.csv
+models/bert_model.pth
