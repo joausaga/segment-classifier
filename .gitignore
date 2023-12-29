@@ -9,3 +9,5 @@ ROADMAP.md
 tmp
 lib
 db
+jobs_test.csv
+jobs_training.csv
