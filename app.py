@@ -1,14 +1,12 @@
 import click
-import joblib
-import json
 import os
 import pandas as pd
+import torch
 import warnings
 
 warnings.filterwarnings('ignore')
 
-from gensim.models.doc2vec import Doc2Vec
-from text_processor import *
+from transformers import BertTokenizer
 from utils import *
 
 
@@ -20,13 +18,44 @@ def get_prediction_class(prediction, encoder_file_path):
             return class_name
 
 
+def segment_preprocessing(segment, tokenizer, max_length=50):
+  '''
+  Returns <class transformers.tokenization_utils_base.BatchEncoding> with the following fields:
+    - input_ids: list of token ids
+    - token_type_ids: list of token type ids
+    - attention_mask: list of indices (0,1) specifying which tokens 
+    should considered by the model (return_attention_mask = True).
+  '''
+  encoded_segment = tokenizer.encode_plus(
+    segment,
+    add_special_tokens = True,
+    max_length = max_length,
+    pad_to_max_length = True,
+    return_attention_mask = True,
+    return_tensors = 'pt',
+    truncation = True
+  )
+  return encoded_segment
+
+
+def make_prediction(model, ids, attention_mask, device):
+  with torch.no_grad():
+    model_output = model(
+        ids.to(device),
+        token_type_ids=None,
+        attention_mask=attention_mask.to(device)
+    )
+  pred = np.argmax(model_output.logits.cpu().numpy()).flatten().item()
+  return pred
+
+
 @click.command()
 @click.option('--input_fn', '-ifn', default='')
 @click.option('--outputs_dir', '-odir', default='outputs')
 @click.option('--output_fn', '-ofn', default='prediction_output.csv')
 @click.option('--training_outputs_fn', '-tofn', default='output_ml_training.json')
 @click.option('--models_dir', '-mdir', default='models')
-@click.option('--classifier_name', '-clf', default='SVM')
+@click.option('--classifier_name', '-clf', default='BERT')
 @click.option('--doc2vec_model_fn', '-d2vm', default='doc2vec.model')
 @click.option('--encoder_fn', '-efn', default='encoder_classes.npy')
 @click.option('--verbose', '-v', is_flag=True, default=True)
@@ -40,54 +69,45 @@ def main(input_fn, outputs_dir, output_fn, training_outputs_fn, models_dir,
         print('-'*10)
         # 0. read input file
         input_df = pd.read_csv(input_fn)
-        # 1. create syntactial features and concatenate with segment index
+        # 1. preprocess segment texts
         if verbose:
-            print('[1/7] Creating syntactical features...')
-        syn_features_df = pd.DataFrame()
-        for idx, row in input_df.iterrows():
-            syn_features_df = pd.concat(
-                [syn_features_df, create_syntactical_features(row['segment'], idx)]
-            )
-        new_input_df = pd.concat([input_df, syn_features_df.reindex(input_df.index)], 
-                                 axis=1)
-        # 2. preprocess segment texts
+            print('[1/4] Preprocessing segment texts...')
+        tokenizer = BertTokenizer.from_pretrained(
+            'bert-base-uncased', 
+            do_lower_case=True
+        )    
+        token_ids = []
+        attention_masks = []
+        max_length = 200
+        for segment in input_df.segment:
+            encoding_dict = segment_preprocessing(segment, tokenizer, max_length)
+            token_ids.append(encoding_dict['input_ids'])
+            attention_masks.append(encoding_dict['attention_mask'])
+
+        token_id = torch.cat(token_ids, dim = 0)
+        attention_masks = torch.cat(attention_masks, dim = 0)
+        # 2. load model
         if verbose:
-            print('[2/7] Preprocessing segment texts...')
-        processed_segs = preprocess_segments(new_input_df['segment'])
-        # 3. scale numerical features
-        if verbose:
-            print('[3/7] Scaling numerical features...')
-        features_to_scale = ['segment_index'] 
-        features_to_scale.extend(list(syn_features_df.columns))
-        array_num_features = np.array(new_input_df.loc[:,features_to_scale])
-        scaled_features_array = scale_features(array_num_features, models_dir)
-        scaled_num_features_df = pd.DataFrame(scaled_features_array, 
-                                 columns=features_to_scale)
-        # 4. generate doc from segment tokens
-        if verbose:
-            print('[4/7] Generating doc embeddings for segments...')
-        doc2vec_model_file_path = os.path.join(models_dir, doc2vec_model_fn)
-        doc2vec_model = Doc2Vec.load(doc2vec_model_file_path)
-        doc_vectors =  [doc2vec_model.infer_vector(seg_tokens) 
-                        for seg_tokens in processed_segs]
-        # 5. concatenate doc vector2 with numerical features
-        features = np.concatenate((doc_vectors, scaled_num_features_df), axis=1)
-        # 6. load model
-        if verbose:
-            print(f'[5/7] Loading {classifier_name} model classifier...')
-        classifier = None
-        training_outputs_file_path = os.path.join(outputs_dir, training_outputs_fn)
-        with open(training_outputs_file_path, 'r') as f:
-            training_outputs = json.load(f)
-            for training in training_outputs:
-                if training['algorithm'] == classifier_name:
-                    model_file_path = training['model_file_path']
-                    classifier = joblib.load(model_file_path)['model']
+            print(f'[2/4] Loading {classifier_name} model classifier...')
+        model_name = f'bert_model.pth'
+        model_file_path = os.path.join(models_dir, model_name)
+        classifier = torch.load(model_file_path)
         if classifier:
-            # 7. make predictions
+            # 3. make predictions
             if verbose:
-                print('[6/7] Making predictions...')
-            predictions = classifier.predict(features)
+                print('[3/4] Making predictions...')
+            if torch.cuda.is_available():
+                print('GPU available and will be used for training.')
+                device = torch.device('cuda')
+            else:
+                print('Only CPU available.')
+                device = torch.device('cpu')
+            predictions = make_prediction(
+                classifier, 
+                token_id, 
+                attention_masks, 
+                device
+            )
             # 8. convert prediction numbers to their corresponding classes
             encoder_file_path = os.path.join(models_dir, encoder_fn)
             predictions_df = pd.DataFrame(predictions, columns=['prediction'])
@@ -96,7 +116,7 @@ def main(input_fn, outputs_dir, output_fn, training_outputs_fn, models_dir,
                     lambda x: get_prediction_class(x, encoder_file_path))
             # 9. save predictions
             if verbose:
-                print('[7/7] Saving predictions...')
+                print('[4/4] Saving predictions...')
             input_df = pd.concat([input_df, predictions_df['prediction_class']], 
                                  axis=1)
             input_df.to_csv(output_file_path)
